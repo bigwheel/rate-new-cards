@@ -42,7 +42,9 @@ object SkinnyAppBuild extends Build {
       "org.scalatra"            %% "scalatra-scalatest"  % scalatraVersion % "test",
       "org.eclipse.jetty"       %  "jetty-webapp"        % jettyVersion    % "container",
       "org.eclipse.jetty"       %  "jetty-plus"          % jettyVersion    % "container",
-      "javax.servlet"           %  "javax.servlet-api"   % "3.1.0"         % "container;provided;test"
+      "javax.servlet"           %  "javax.servlet-api"   % "3.1.0"         % "container;provided;test",
+      "org.scalaz"              %% "scalaz-core"         % "7.1.3",
+      "net.ruippeixotog"        %% "scala-scraper"       % "0.1.1"
     ),
     resolvers ++= Seq(
       "sonatype releases"  at "https://oss.sonatype.org/content/repositories/releases"
@@ -56,7 +58,7 @@ object SkinnyAppBuild extends Build {
     logBuffered in Test := false,
     javaOptions in Test ++= Seq("-Dskinny.env=test"),
     fork in Test := true,
-    scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature"),
+    scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-language:implicitConversions", "-language:higherKinds"),
     ideaExcludeFolders := Seq(".idea", ".idea_modules", "db", "target", "task/target", "build", "standalone-build", "node_modules")
   )
 

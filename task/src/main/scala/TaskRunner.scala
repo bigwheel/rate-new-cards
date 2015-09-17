@@ -1,3 +1,8 @@
+import net.ruippeixotog.scalascraper.browser.Browser
+import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
+import net.ruippeixotog.scalascraper.dsl.DSL._
+import org.jsoup.nodes.Element
+
 object TaskRunner extends skinny.task.TaskLauncher {
 
   register("assets:precompile", (params) => {
@@ -5,17 +10,14 @@ object TaskRunner extends skinny.task.TaskLauncher {
     skinny.task.AssetsPrecompileTask.main(Array(buildDir))
   })
 
-  // simple example
-  /*
-  register("addMember", (params) => { params match  {
-    case name :: _ =>
-      skinny.DBSettings.initialize()
-      model.Member.createWithAttributes('name -> params(0))
-    case _ =>
-      println("[usage] ./skinny task:run addMember Alice")
-      sys.exit(1)
-  }})
-  */
+  register("loadCards", _ => {
+    val b = new Browser
+    val doc = b.get("http://magic.wizards.com/ja/articles/archive/card-image-gallery/%E3%80%8E%E6%88%A6%E4%B9%B1%E3%81%AE%E3%82%BC%E3%83%B3%E3%83%87%E3%82%A3%E3%82%AB%E3%83%BC%E3%80%8F-2015-09-17")
+    println(doc)
+    val c: Element = doc >> element("div#content-detail-page-of-an-article > div > div > p > img")
+    println(c.attr("alt"))
+    println("success")
+  })
 
 }
 
