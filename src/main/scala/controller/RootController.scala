@@ -13,8 +13,8 @@ class RootController extends ApplicationController {
   }
 
   def card = {
-    val name = params.get("cardName").get // ここにくる場合は必ずcardNameパラメータがあるはず
-    Card.where('name -> name).apply().headOption match {
+    val id = params.getAs[Long]("id") // ここにくる場合は必ずcardNameパラメータがあるはず
+    Card.where('id -> id).apply().headOption match {
       case Some(card) =>
         set("card", card)
         render("/root/card")

@@ -4,5 +4,5 @@
 <hr/>
 
 #for (card <- cards)
-    <a href="/cards/${card.name}"><img src="${card.imageUrl}" alt="${card.name}" /></a>
+    <a href="/cards/${card.id}"><img src="${card.imageUrl}" alt="${card.name}" /></a>
 #end
