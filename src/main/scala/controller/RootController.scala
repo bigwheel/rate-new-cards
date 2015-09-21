@@ -7,6 +7,8 @@ class RootController extends ApplicationController {
 
   def index = render("/root/index")
 
+  def login = "help"
+
   def cards = {
     set("cards", Card.findAllModels())
     render("/root/cards")
