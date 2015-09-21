@@ -26,6 +26,25 @@
   </div>
 </div>
 <div class="form-group">
+  <label class="control-label" for="card_number">
+    ${s.i18n.getOrKey("card.cardNumber")}
+  </label>
+  <div class="controls row">
+    <div class="${if(keyAndErrorMessages.hasErrors("card_number")) "has-error" else ""}">
+      <div class="col-xs-12">
+        <input type="text" name="card_number" class="form-control" value="${s.params.card_number}" />
+      </div>
+    </div>
+    #if (keyAndErrorMessages.hasErrors("card_number"))
+      <div class="col-xs-12 has-error">
+        #for (error <- keyAndErrorMessages.getErrors("card_number"))
+          <label class="control-label">${error}</label>
+        #end
+      </div>
+    #end
+  </div>
+</div>
+<div class="form-group">
   <label class="control-label" for="image_url">
     ${s.i18n.getOrKey("card.imageUrl")}
   </label>

@@ -19,57 +19,59 @@ class CardsController_IntegrationTestSpec extends ScalatraFlatSpec with SkinnyTe
   def newCard = FactoryGirl(Card).create()
 
   it should "show cards" in {
-    get("/cards") {
+    get("/resource/cards") {
       logBodyUnless(200)
       status should equal(200)
     }
-    get("/cards/") {
+    get("/resource/cards/") {
       logBodyUnless(200)
       status should equal(200)
     }
-    get("/cards.json") {
+    get("/resource/cards.json") {
       logBodyUnless(200)
       status should equal(200)
     }
-    get("/cards.xml") {
+    get("/resource/cards.xml") {
       logBodyUnless(200)
       status should equal(200)
     }
   }
 
   it should "show a card in detail" in {
-    get(s"/cards/${newCard.id}") {
+    get(s"/resource/cards/${newCard.id}") {
       logBodyUnless(200)
       status should equal(200)
     }
-    get(s"/cards/${newCard.id}.xml") {
+    get(s"/resource/cards/${newCard.id}.xml") {
       logBodyUnless(200)
       status should equal(200)
     }
-    get(s"/cards/${newCard.id}.json") {
+    get(s"/resource/cards/${newCard.id}.json") {
       logBodyUnless(200)
       status should equal(200)
     }
   }
 
   it should "show new entry form" in {
-    get(s"/cards/new") {
+    get(s"/resource/cards/new") {
       logBodyUnless(200)
       status should equal(200)
     }
   }
 
   it should "create a card" in {
-    post(s"/cards",
+    post(s"/resource/cards",
       "name" -> "dummy",
+      "card_number" -> "1",
       "image_url" -> "dummy") {
       logBodyUnless(403)
       status should equal(403)
     }
 
     withSession("csrf-token" -> "valid_token") {
-      post(s"/cards",
+      post(s"/resource/cards",
         "name" -> "dummy",
+        "card_number" -> "1",
         "image_url" -> "dummy",
         "csrf-token" -> "valid_token") {
         logBodyUnless(302)
@@ -81,23 +83,25 @@ class CardsController_IntegrationTestSpec extends ScalatraFlatSpec with SkinnyTe
   }
 
   it should "show the edit form" in {
-    get(s"/cards/${newCard.id}/edit") {
+    get(s"/resource/cards/${newCard.id}/edit") {
       logBodyUnless(200)
       status should equal(200)
     }
   }
 
   it should "update a card" in {
-    put(s"/cards/${newCard.id}",
+    put(s"/resource/cards/${newCard.id}",
       "name" -> "dummy",
+      "card_number" -> "1",
       "image_url" -> "dummy") {
       logBodyUnless(403)
       status should equal(403)
     }
 
     withSession("csrf-token" -> "valid_token") {
-      put(s"/cards/${newCard.id}",
+      put(s"/resource/cards/${newCard.id}",
         "name" -> "dummy",
+        "card_number" -> "1",
         "image_url" -> "dummy",
         "csrf-token" -> "valid_token") {
         logBodyUnless(302)
@@ -107,12 +111,12 @@ class CardsController_IntegrationTestSpec extends ScalatraFlatSpec with SkinnyTe
   }
 
   it should "delete a card" in {
-    delete(s"/cards/${newCard.id}") {
+    delete(s"/resource/cards/${newCard.id}") {
       logBodyUnless(403)
       status should equal(403)
     }
     withSession("csrf-token" -> "valid_token") {
-      delete(s"/cards/${newCard.id}?csrf-token=valid_token") {
+      delete(s"/resource/cards/${newCard.id}?csrf-token=valid_token") {
         logBodyUnless(200)
         status should equal(200)
       }

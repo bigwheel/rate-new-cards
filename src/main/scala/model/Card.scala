@@ -7,6 +7,7 @@ import org.joda.time._
 case class Card(
   id: Long,
   name: String,
+  cardNumber: Int,
   imageUrl: String,
   createdAt: DateTime,
   updatedAt: DateTime
@@ -32,6 +33,7 @@ object Card extends SkinnyCRUDMapper[Card] with TimestampsFeature[Card] {
   override def extract(rs: WrappedResultSet, rn: ResultName[Card]): Card = new Card(
     id = rs.get(rn.id),
     name = rs.get(rn.name),
+    cardNumber = rs.get(rn.cardNumber),
     imageUrl = rs.get(rn.imageUrl),
     createdAt = rs.get(rn.createdAt),
     updatedAt = rs.get(rn.updatedAt)

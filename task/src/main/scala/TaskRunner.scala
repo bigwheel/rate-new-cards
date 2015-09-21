@@ -22,7 +22,9 @@ object TaskRunner extends skinny.task.TaskLauncher {
 
     skinny.DBSettings.initialize()
     Card.deleteAll
-    nameAndImageUrls.foreach(p => Card.createWithAttributes('name -> p._1, 'imageUrl -> p._2))
+    nameAndImageUrls.foreach { p =>
+      Card.createWithAttributes('name -> p._1, 'cardNumber -> 1, 'imageUrl -> p._2)
+    }
     // Card.findAll().foreach(c => println(c))
   })
 

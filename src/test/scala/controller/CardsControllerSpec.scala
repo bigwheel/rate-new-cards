@@ -63,6 +63,7 @@ class CardsControllerSpec extends FunSpec with Matchers with BeforeAndAfterAll w
         val controller = createMockController
         controller.prepareParams(
           "name" -> "dummy",
+          "card_number" -> "1",
           "image_url" -> "dummy")
         controller.createResource()
         controller.status should equal(200)
@@ -90,6 +91,7 @@ class CardsControllerSpec extends FunSpec with Matchers with BeforeAndAfterAll w
       val controller = createMockController
       controller.prepareParams(
         "name" -> "dummy",
+        "card_number" -> "1",
         "image_url" -> "dummy")
       controller.updateResource(card.id)
       controller.status should equal(200)

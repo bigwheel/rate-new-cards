@@ -39,6 +39,7 @@
   <tr>
     <th>${s.i18n.getOrKey("card.id")}</th>
     <th>${s.i18n.getOrKey("card.name")}</th>
+    <th>${s.i18n.getOrKey("card.cardNumber")}</th>
     <th>${s.i18n.getOrKey("card.imageUrl")}</th>
     <th></th>
   </tr>
@@ -48,6 +49,7 @@
   <tr>
     <td>${item.id}</td>
     <td>${item.name}</td>
+    <td>${item.cardNumber}</td>
     <td>${item.imageUrl}</td>
     <td>
       <a href="${s.url(Controllers.cards.showUrl, "id" -> item.id)}" class="btn btn-default">${s.i18n.getOrKey("detail")}</a>

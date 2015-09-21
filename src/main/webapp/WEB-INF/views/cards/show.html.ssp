@@ -22,10 +22,13 @@
     <td>${item.name}</td>
   </tr>
   <tr>
+    <th>${s.i18n.getOrKey("card.cardNumber")}</th>
+    <td>${item.cardNumber}</td>
+  </tr>
+  <tr>
     <th>${s.i18n.getOrKey("card.imageUrl")}</th>
     <td>${item.imageUrl}</td>
   </tr>
-
 </tbody>
 </table>
 
