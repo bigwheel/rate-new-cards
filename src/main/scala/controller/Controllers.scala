@@ -13,6 +13,8 @@ object Controllers {
 
   object root extends RootController with Routes {
     val indexUrl = get("/?")(index).as('index)
+    val cardsUrl = get("/cards/?")(cards).as('cards)
+    val cardUrl = get("/cards/:cardName")(card).as('card)
   }
   object cards extends _root_.controller.CardsController with Routes {
   }

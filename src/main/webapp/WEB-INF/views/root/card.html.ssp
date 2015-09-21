@@ -1,0 +1,3 @@
+<%@val card: model.Card %>
+
+<img src="${card.imageUrl}" alt="${card.name}" />

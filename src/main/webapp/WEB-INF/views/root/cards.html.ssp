@@ -1,0 +1,8 @@
+<%@val cards: Seq[model.Card] %>
+
+<h3>Hello World!!</h3>
+<hr/>
+
+#for (card <- cards)
+    <a href="/cards/${card.name}"><img src="${card.imageUrl}" alt="${card.name}" /></a>
+#end

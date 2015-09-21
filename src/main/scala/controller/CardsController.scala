@@ -12,7 +12,7 @@ class CardsController extends SkinnyResource with ApplicationController {
   override def resourcesName = "cards"
   override def resourceName = "card"
 
-  override def resourcesBasePath = s"/${toSnakeCase(resourcesName)}"
+  override def resourcesBasePath = s"/resource/${toSnakeCase(resourcesName)}"
   override def useSnakeCasedParamKeys = true
 
   override def viewsDirectoryPath = s"/${resourcesName}"
