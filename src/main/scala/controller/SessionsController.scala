@@ -1,8 +1,13 @@
-import controller.ApplicationController
+package controller
+
 import skinny.controller.feature.GoogleLoginFeature
 import skinny.oauth2.client.google.GoogleUser
-import skinny._
 
+/**
+ * 参考
+ * http://skinny-framework.org/documentation/oauth.html
+ * https://github.com/skinny-framework/skinny-framework/blob/master/example/src/main/scala/controller/GoogleController.scala
+ */
 class SessionsController extends ApplicationController with GoogleLoginFeature {
 
 // these env variables are expected by default
@@ -11,28 +16,21 @@ class SessionsController extends ApplicationController with GoogleLoginFeature {
 
   override protected def redirectURI: String = "http://localhost:8080/auth/google/callback"
 
-  override protected def saveAuthorizedUser(gUser: GoogleUser): Unit = {
-    val user = User.findById(gUser.id).getOrElse {
-      User.create(gUser)
-    }
-    session.setAttribute("currentUser", user)
+  override protected def saveAuthorizedUser(user: GoogleUser): Unit = {
+    session.setAttribute("user", user)
+  }
+
+  override protected def handleWhenLoginSucceeded(): Any = {
+    flash("info") = "You have successfully logged in."
+    flash += ("info" -> "You have successfully logged in.")
+    println("hello")
+    redirect302("/")
   }
 
   override protected def handleWhenLoginFailed(): Any = {
     flash("warn") = "Login failed. Please try again."
-    flash += ("warni" -> "Login failed. Please try again.")
+    println("hello2")
     redirect302("/login")
   }
 
-  override protected def handleWhenLoginSucceeded(): Any = {
-    flash("info") = "You have successfully registered and logged in."
-    redirect302("/")
-  }
-}
-
-object Controllers {
-  object gAuth extends SessionsController with Routes {
-    val facebookLoginUrl = post("/auth/google")(loginRedirect).as('googleLogin)
-    val facebookLoginCallbackUrl = get("/auth/google/callback")(callback).as('googleLogin)
-  }
 }

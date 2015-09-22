@@ -16,6 +16,21 @@
   </head>
   <body>
     <div class="container span12">
+    <!-- 参考 http://argius.hatenablog.jp/entry/2014/06/15/194537 -->
+    #for (message <- s.flash.error)
+      <p class="alert alert-danger">${message}</p>
+    #end
+    #for (message <- s.flash.warning)
+      <p class="alert alert-warning">${message}</p>
+    #end
+    #for (message <- s.flash.success)
+      <p class="alert alert-success">${message}</p>
+    #end
+    #for (message <- s.flash.info)
+      <p class="alert alert-info">${message}</p>
+    #end
+    </div>
+    <div class="container span12">
       ${unescape(body)}
       <hr/>
       <a class="btn btn-default" href="${uri("/")}">${s.i18n.get("top")}</a>

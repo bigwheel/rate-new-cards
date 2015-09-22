@@ -7,7 +7,8 @@ class RootController extends ApplicationController {
 
   def index = render("/root/index")
 
-  def login = """<a href="/auth/google">ログイン</a>"""
+  // def login = """<a href="/auth/google">ログイン</a>"""
+  def login = """<form method="post" action="/auth/google"><input type="submit" value="ログイン" /></form>"""
 
   def cards = {
     set("cards", Card.findAllModels())
