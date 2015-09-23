@@ -1,22 +1,22 @@
 package controller
 
-import skinny.controller.feature.GoogleLoginFeature
-import skinny.oauth2.client.google.GoogleUser
+import skinny.controller.feature.TwitterLoginFeature
+import twitter4j.User
 
 /**
  * 参考
  * http://skinny-framework.org/documentation/oauth.html
  * https://github.com/skinny-framework/skinny-framework/blob/master/example/src/main/scala/controller/GoogleController.scala
  */
-class SessionsController extends ApplicationController with GoogleLoginFeature {
+class SessionsController extends ApplicationController with TwitterLoginFeature {
 
   // these env variables are expected by default
-  // SKINNY_OAUTH2_CLIENT_ID_GOOGLE
-  // SKINNY_OAUTH2_CLIENT_SECRET_GOOGLE
+  // SKINNY_OAUTH1_CONSUMER_KEY_TWITTER
+  // SKINNY_OAUTH1_CONSUMER_SECRET_TWITTER
 
-  override protected def redirectURI: String = "http://localhost:8080/auth/google/callback"
+  override def isLocalDebug = true
 
-  override protected def saveAuthorizedUser(user: GoogleUser): Unit = {
+  override protected def saveAuthorizedUser(user: User): Unit = {
     session.setAttribute("user", user)
   }
 

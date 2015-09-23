@@ -45,7 +45,8 @@ object SkinnyAppBuild extends Build {
       "javax.servlet"           %  "javax.servlet-api"   % "3.1.0"         % "container;provided;test",
       "org.scalaz"              %% "scalaz-core"         % "7.1.3",
       "net.ruippeixotog"        %% "scala-scraper"       % "0.1.1",
-      "org.skinny-framework"    %% "skinny-oauth2-controller" % "1.3.20"
+      "org.skinny-framework"    %% "skinny-oauth2-controller" % skinnyVersion,
+      "org.skinny-framework"    %% "skinny-twitter-controller" % skinnyVersion
     ),
     resolvers ++= Seq(
       "sonatype releases"  at "https://oss.sonatype.org/content/repositories/releases"

@@ -23,8 +23,8 @@ object Controllers {
   }
 
   object gAuth extends SessionsController with Routes {
-    val googleLoginUrl = post("/auth/google")(loginRedirect).as('googleLogin)
-    val googleLoginCallbackUrl = get("/auth/google/callback")(callback).as('googleLogin)
+    val twitterLoginUrl = post("/auth/twitter")(loginRedirect).as('twitterLogin)
+    val twitterLoginCallbackUrl = get("/auth/twitter/callback")(callback).as('twitterLogin)
   }
 
 }
