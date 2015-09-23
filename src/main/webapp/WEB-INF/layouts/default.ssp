@@ -1,3 +1,4 @@
+<%@val userOption: Option[skinny.oauth2.client.google.GoogleUser] %>
 <%@val body: String %>
 <%@val s: skinny.Skinny %>
 <!DOCTYPE html>
@@ -15,25 +16,65 @@
     -->
   </head>
   <body>
-    <div class="container span12">
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">MTGカード評価</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/cards">戦乱のゼンディカー</a></li>
+          </ul>
+          #if (userOption.isEmpty)
+            <form class="navbar-form navbar-right" method="post" action="/auth/google">
+            <button type="submit" class="btn btn-default">ログイン</button>
+            </form>
+            <p class="navbar-text navbar-right">ようこそ!</p>
+          #else
+          <form class="navbar-form navbar-right" method="post" action="/logout">
+            <button type="submit" class="btn btn-default">ログアウト</button>
+          </form>
+          <p class="navbar-text navbar-right">ようこそ!${userOption.get.displayName}さん</p>
+          #end
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
     <!-- 参考 http://argius.hatenablog.jp/entry/2014/06/15/194537 -->
     #for (message <- s.flash.error)
-      <p class="alert alert-danger">${message}</p>
+      <p class="alert alert-dismissible alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        ${message}
+      </p>
     #end
     #for (message <- s.flash.warning)
-      <p class="alert alert-warning">${message}</p>
+      <p class="alert alert-dismissible alert-warning" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        ${message}
+      </p>
     #end
     #for (message <- s.flash.success)
-      <p class="alert alert-success">${message}</p>
+      <p class="alert alert-dismissible alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        ${message}
+      </p>
     #end
     #for (message <- s.flash.info)
-      <p class="alert alert-info">${message}</p>
+      <p class="alert alert-dismissible alert-info" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        ${message}
+      </p>
     #end
     </div>
     <div class="container span12">
       ${unescape(body)}
-      <hr/>
-      <a class="btn btn-default" href="${uri("/")}">${s.i18n.get("top")}</a>
     </div>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="${uri("/assets/js/skinny-framework.js")}"></script>

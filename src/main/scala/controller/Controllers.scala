@@ -14,7 +14,7 @@ object Controllers {
 
   object root extends RootController with Routes {
     val indexUrl = get("/?")(index).as('index)
-    val loginUrl = get("/login")(login).as('login)
+    val logoutUrl = post("/logout")(logout).as('logout)
     val cardsUrl = get("/cards/?")(cards).as('cards)
     val cardUrl = get("/cards/:id")(card).as('card)
   }

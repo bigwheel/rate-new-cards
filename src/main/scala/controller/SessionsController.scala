@@ -10,9 +10,9 @@ import skinny.oauth2.client.google.GoogleUser
  */
 class SessionsController extends ApplicationController with GoogleLoginFeature {
 
-// these env variables are expected by default
-// SKINNY_OAUTH2_CLIENT_ID_GOOGLE
-// SKINNY_OAUTH2_CLIENT_SECRET_GOOGLE
+  // these env variables are expected by default
+  // SKINNY_OAUTH2_CLIENT_ID_GOOGLE
+  // SKINNY_OAUTH2_CLIENT_SECRET_GOOGLE
 
   override protected def redirectURI: String = "http://localhost:8080/auth/google/callback"
 
@@ -21,16 +21,13 @@ class SessionsController extends ApplicationController with GoogleLoginFeature {
   }
 
   override protected def handleWhenLoginSucceeded(): Any = {
-    flash("info") = "You have successfully logged in."
-    flash += ("info" -> "You have successfully logged in.")
-    println("hello")
+    flash("info") = "ログインしました"
     redirect302("/")
   }
 
   override protected def handleWhenLoginFailed(): Any = {
-    flash("warn") = "Login failed. Please try again."
-    println("hello2")
-    redirect302("/login")
+    flash("warn") = "ログインに失敗しました"
+    redirect302("/")
   }
 
 }

@@ -5,10 +5,15 @@ import skinny._
 
 class RootController extends ApplicationController {
 
+  before() { set("userOption", session.get("user")) }
+
   def index = render("/root/index")
 
-  // def login = """<a href="/auth/google">ログイン</a>"""
-  def login = """<form method="post" action="/auth/google"><input type="submit" value="ログイン" /></form>"""
+  def logout = {
+    session.clear
+    flash("info") = "ログアウトしました"
+    redirect302("/")
+  }
 
   def cards = {
     set("cards", Card.findAllModels())
