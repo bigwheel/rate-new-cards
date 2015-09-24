@@ -32,6 +32,7 @@ class RootController extends ApplicationController {
   }
 
   def evaluationPost = {
+    flash("info") = "投稿に成功しました"
     redirect302(request.getRequestURI)
   }
 }
