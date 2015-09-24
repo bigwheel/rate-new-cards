@@ -1,0 +1,59 @@
+<h2>点数評価基準(参考)</h2>
+<hr/>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>点</th>
+        <th>評価</th>
+        <th>カード例</th>
+        <th>点</th>
+        <th>評価</th>
+        <th>カード例</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>10点</td>
+        <td>取れ</td>
+        <td><img alt="テーロスの魂" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=385095&type=card" /></td>
+        <td>9点</td>
+        <td>色が合わないと他の8点とかでも</td>
+        <td><img alt="火炎放射" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=384917&type=card" /></td>
+      </tr>
+      <tr>
+        <td>8点</td>
+        <td>ボムに対処できる or エース級</td>
+        <td><img alt="三つぞろいの霊魂" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=385122&type=card" /></td>
+        <td>7点</td>
+        <td>主戦力</td>
+        <td><img alt="国境地帯の匪賊" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=384899&type=card" /></td>
+      </tr>
+      <tr>
+        <td>6点</td>
+        <td>シナジーでは強い</td>
+        <td><img alt="ヘリオッドの巡礼者" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=384969&type=card" /></td>
+        <td>5点</td>
+        <td>アーキタイプでは入る</td>
+        <td><img alt="研究助手" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=385064&type=card" /></td>
+      </tr>
+      <tr>
+        <td>4点</td>
+        <td>補欠</td>
+        <td><img alt="人喰い苔野獣" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=384904&type=card" /></td>
+        <td>3点</td>
+        <td>最悪入る・数合わせ</td>
+        <td><img alt="太陽の大魔術師の杖" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=385104&type=card" /></td>
+      </tr>
+      <tr>
+        <td>2点</td>
+        <td>サイドで眠るお仕事</td>
+        <td><img alt="火のるつぼ" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=384924&type=card" /></td>
+        <td>1点</td>
+        <td>ゴミ</td>
+        <td><img alt="鎖のヴェール" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=385116&type=card" /></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

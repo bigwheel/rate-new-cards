@@ -9,6 +9,8 @@ class RootController extends ApplicationController {
 
   def index = render("/root/index")
 
+  def scoreSample = render("/root/score_sample")
+
   def signup = {
     set("user", session("user"))
     render("/root/signup")
