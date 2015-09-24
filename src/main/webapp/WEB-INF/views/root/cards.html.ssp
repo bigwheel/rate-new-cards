@@ -4,5 +4,48 @@
 <hr/>
 
 #for (card <- cards)
-    <a href="/cards/${card.id}"><img src="${card.imageUrl}" alt="${card.name}" /></a>
+  <div class="row" id="${card.id}">
+    <div class="col-md-4">
+      <a href="/cards/${card.id}"><img src="${card.imageUrl}" alt="${card.name}" /></a>
+    </div>
+    <div class="col-md-8">
+      <h3><a href="#${card.id}">${card.name}</a></h3>
+
+      <a class="btn btn-default" role="button" data-toggle="collapse" href="#eval${card.id}" aria-expanded="false" aria-controls="eval${card.id}">
+      評価を書き込む
+      </a>
+      <div class="collapse" id="eval${card.id}">
+        <form method="post" action="/cards">
+          <input type="hidden" name="card_id" value="${card.id}">
+          <div class="form-group">
+            <label for="description">カード点数</label>
+            <div class="form-inline">
+              <div class="form-group">
+                <select class="form-control">
+                  <option>10</option>
+                  <option>9</option>
+                  <option>8</option>
+                  <option>7</option>
+                  <option>6</option>
+                  <option>5</option>
+                  <option>4</option>
+                  <option>3</option>
+                  <option>2</option>
+                  <option>1</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="summary">１行評価</label>
+                <input type="text" class="form-control" id="summary" size="90" placeholder="例: 「及第点、ビートダウンだと+1点」" />
+              </div>
+            </div>
+            <label for="description">評価詳細(非必須)</label>
+            <textarea id="description" class="form-control" rows="3" placeholder="ここへカードの評価を入力"></textarea>
+            <button type="submit" class="btn btn-primary">投稿</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <hr/>
 #end
