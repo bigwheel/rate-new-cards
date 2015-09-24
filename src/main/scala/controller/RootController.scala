@@ -31,4 +31,7 @@ class RootController extends ApplicationController {
     }
   }
 
+  def evaluationPost = {
+    redirect302(request.getRequestURI)
+  }
 }

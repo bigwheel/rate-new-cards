@@ -17,6 +17,7 @@ object Controllers {
     val logoutUrl = post("/logout")(logout).as('logout)
     val cardsUrl = get("/cards/?")(cards).as('cards)
     val cardUrl = get("/cards/:id")(card).as('card)
+    val evaluationPostUrl = post("/cards/:id")(evaluationPost).as('card)
   }
 
   object cards extends _root_.controller.CardsController with Routes {
