@@ -1,0 +1,17 @@
+<%@val user: twitter4j.User %>
+
+<h2>アカウント作成中</h2>
+
+<hr/>
+
+<p>
+  パスワードを扱うのが億劫なので、認証系はすべて外部のOAuthへ任せています。
+</p>
+
+<form method="post" action="/signup">
+  <div class="form-group">
+    <label for="displayName">表示名(20文字以下。日本語OK)</label>
+    <input type="text" name="displayName" maxlength="20" class="form-control" placeholder="表示名">
+    <button type="submit" class="btn btn-default">作成</button>
+  </div>
+</form>

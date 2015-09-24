@@ -1,7 +1,6 @@
 package controller
 
 import skinny.controller.feature.TwitterLoginFeature
-import twitter4j.User
 
 /**
  * 参考
@@ -16,13 +15,21 @@ class SessionsController extends ApplicationController with TwitterLoginFeature 
 
   override def isLocalDebug = true
 
-  override protected def saveAuthorizedUser(user: User): Unit = {
+  override protected def saveAuthorizedUser(user: twitter4j.User): Unit = {
     session.setAttribute("user", user)
   }
 
   override protected def handleWhenLoginSucceeded(): Any = {
-    flash("info") = "ログインしました"
-    redirect302("/")
+    println("hello" * 100)
+    model.User.findByTwitterUser(session("user").asInstanceOf[twitter4j.User]) match {
+      case Some(user) =>
+        flash("info") = "ログインしました"
+        session.remove("user")
+        session.setAttribute("user_id", user.id)
+        redirect302("/")
+      case None =>
+        redirect302("/signup")
+    }
   }
 
   override protected def handleWhenLoginFailed(): Any = {
