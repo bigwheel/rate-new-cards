@@ -1,0 +1,108 @@
+<%@val s: skinny.Skinny %>
+<%@val keyAndErrorMessages: skinny.KeyAndErrorMessages %>
+
+<%-- Be aware of package imports.
+ 1. src/main/scala/templates/ScalatePackage.scala
+ 2. scalateTemplateConfig in project/Build.scala
+--%>
+
+<div class="form-group">
+  <label class="control-label" for="user_id">
+    ${s.i18n.getOrKey("rating.userId")}
+  </label>
+  <div class="controls row">
+    <div class="${if(keyAndErrorMessages.hasErrors("user_id")) "has-error" else ""}">
+      <div class="col-xs-12">
+        <input type="text" name="user_id" class="form-control" value="${s.params.user_id}" />
+      </div>
+    </div>
+    #if (keyAndErrorMessages.hasErrors("user_id"))
+      <div class="col-xs-12 has-error">
+        #for (error <- keyAndErrorMessages.getErrors("user_id"))
+          <label class="control-label">${error}</label>
+        #end
+      </div>
+    #end
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label" for="card_id">
+    ${s.i18n.getOrKey("rating.cardId")}
+  </label>
+  <div class="controls row">
+    <div class="${if(keyAndErrorMessages.hasErrors("card_id")) "has-error" else ""}">
+      <div class="col-xs-12">
+        <input type="text" name="card_id" class="form-control" value="${s.params.card_id}" />
+      </div>
+    </div>
+    #if (keyAndErrorMessages.hasErrors("card_id"))
+      <div class="col-xs-12 has-error">
+        #for (error <- keyAndErrorMessages.getErrors("card_id"))
+          <label class="control-label">${error}</label>
+        #end
+      </div>
+    #end
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label" for="score">
+    ${s.i18n.getOrKey("rating.score")}
+  </label>
+  <div class="controls row">
+    <div class="${if(keyAndErrorMessages.hasErrors("score")) "has-error" else ""}">
+      <div class="col-xs-12">
+        <input type="text" name="score" class="form-control" value="${s.params.score}" />
+      </div>
+    </div>
+    #if (keyAndErrorMessages.hasErrors("score"))
+      <div class="col-xs-12 has-error">
+        #for (error <- keyAndErrorMessages.getErrors("score"))
+          <label class="control-label">${error}</label>
+        #end
+      </div>
+    #end
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label" for="summary">
+    ${s.i18n.getOrKey("rating.summary")}
+  </label>
+  <div class="controls row">
+    <div class="${if(keyAndErrorMessages.hasErrors("summary")) "has-error" else ""}">
+      <div class="col-xs-12">
+        <input type="text" name="summary" class="form-control" value="${s.params.summary}" />
+      </div>
+    </div>
+    #if (keyAndErrorMessages.hasErrors("summary"))
+      <div class="col-xs-12 has-error">
+        #for (error <- keyAndErrorMessages.getErrors("summary"))
+          <label class="control-label">${error}</label>
+        #end
+      </div>
+    #end
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label" for="description">
+    ${s.i18n.getOrKey("rating.description")}
+  </label>
+  <div class="controls row">
+    <div class="${if(keyAndErrorMessages.hasErrors("description")) "has-error" else ""}">
+      <div class="col-xs-12">
+        <input type="text" name="description" class="form-control" value="${s.params.description}" />
+      </div>
+    </div>
+    #if (keyAndErrorMessages.hasErrors("description"))
+      <div class="col-xs-12 has-error">
+        #for (error <- keyAndErrorMessages.getErrors("description"))
+          <label class="control-label">${error}</label>
+        #end
+      </div>
+    #end
+  </div>
+</div>
+<div class="form-actions">
+  ${unescape(s.csrfHiddenInputTag)}
+  <input type="submit" class="btn btn-primary" value="${s.i18n.getOrKey("submit")}">
+  <a class="btn btn-default" href="${s.url(Controllers.ratings.indexUrl)}">${s.i18n.getOrKey("cancel")}</a>
+</div>

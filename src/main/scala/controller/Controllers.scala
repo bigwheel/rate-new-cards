@@ -6,6 +6,7 @@ import skinny.controller.AssetsController
 object Controllers {
 
   def mount(ctx: ServletContext): Unit = {
+    ratings.mount(ctx)
     //users.mount(ctx)
     cards.mount(ctx)
     root.mount(ctx)
@@ -34,6 +35,9 @@ object Controllers {
   object gAuth extends SessionsController with Routes {
     val twitterLoginUrl = post("/auth/twitter")(loginRedirect).as('twitterLogin)
     val twitterLoginCallbackUrl = get("/auth/twitter/callback")(callback).as('twitterLogin)
+  }
+
+  object ratings extends _root_.controller.RatingsController with Routes {
   }
 
 }
