@@ -6,6 +6,7 @@ import skinny.controller.AssetsController
 object Controllers {
 
   def mount(ctx: ServletContext): Unit = {
+    //users.mount(ctx)
     cards.mount(ctx)
     root.mount(ctx)
     AssetsController.mount(ctx)
@@ -19,6 +20,10 @@ object Controllers {
     val cardUrl = get("/cards/:id")(card).as('card)
     val evaluationPostUrl = post("/cards/:id")(evaluationPost).as('card)
   }
+
+  // ユーザー情報が外から丸見えになるのはやばすぎるので無効化(adminだけいじれるように後ほど修正)
+  /*object users extends _root_.controller.UsersController with Routes {
+  }*/
 
   object cards extends _root_.controller.CardsController with Routes {
   }
