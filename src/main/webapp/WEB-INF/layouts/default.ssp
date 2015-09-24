@@ -1,4 +1,4 @@
-<%@val userIdOption: Option[Long] %>
+<%@val userIdOption: Option[Long] = None %>
 <%@val body: String %>
 <%@val s: skinny.Skinny %>
 <!DOCTYPE html>

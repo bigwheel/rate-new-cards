@@ -1,6 +1,7 @@
 package controller
 
 import model.Card
+import model.Rating
 import skinny._
 
 class RootController extends ApplicationController {
@@ -39,8 +40,34 @@ class RootController extends ApplicationController {
   }
 
   def cards = {
-    set("cards", Card.findAllModels())
+    set("cards", Card.findAll())
+    set("ratings", Rating.findAll())
     render("/root/cards")
+  }
+
+  def cardsPost = {
+    val userId = params.getAs[Long]("user_id").get
+    val cardId = params.getAs[Long]("card_id").get
+    val score = params.getAs[Int]("score").get
+    val summary = params.getAs[String]("summary").get
+    val description = params.getAs[String]("description").get
+
+    // TODO: ここ厳密にはupsertないしsession使わないと不整合が起こる可能性がある。
+    // もしくは楽観的ロック(失敗時に再実行)でもいいかもしれない
+    Rating.where('userId -> userId, 'cardId -> cardId).apply().headOption match {
+      case Some(oldRecord) =>
+        Rating.updateById(oldRecord.id).
+          withAttributes('score -> score, 'summary -> summary, 'description -> description)
+      case None =>
+        Rating.createWithAttributes(
+          'userId -> userId,
+          'cardId -> cardId,
+          'score -> score,
+          'summary -> summary,
+          'description -> description
+        )
+    }
+    redirect302(s"/cards#$cardId")
   }
 
   def card = {

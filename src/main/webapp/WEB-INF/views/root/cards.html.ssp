@@ -1,4 +1,7 @@
+<%@val userIdOption: Option[Long] = None %>
 <%@val cards: Seq[model.Card] %>
+<%@val ratings: Seq[model.Rating] %>
+<%@val s: skinny.Skinny %>
 
 <h2>戦乱のゼンディカー</h2>
 <hr/>
@@ -10,18 +13,29 @@
     </div>
     <div class="col-md-8">
       <h3><a href="#${card.id}">${card.name}</a></h3>
+      #for (rating <- ratings.filter(_.cardId == card.id))
+        <p>
+          <string>${rating.score}</string>
+          ${rating.summary}
+          #if (rating.description.nonEmpty)
+            <br>${rating.description}
+          #end
+        </p>
+      #end
 
+      #if (userIdOption.nonEmpty)
       <a class="btn btn-default" role="button" data-toggle="collapse" href="#eval${card.id}" aria-expanded="false" aria-controls="eval${card.id}">
       評価を書き込む
       </a>
       <div class="collapse" id="eval${card.id}">
         <form method="post" action="/cards">
+          <input type="hidden" name="user_id" value="${userIdOption.get}">
           <input type="hidden" name="card_id" value="${card.id}">
           <div class="form-group">
-            <label for="description">カード点数</label>
             <div class="form-inline">
               <div class="form-group">
-                <select class="form-control">
+                <label for="score">カード点数</label>
+                <select class="form-control" name="score">
                   <option>10</option>
                   <option>9</option>
                   <option>8</option>
@@ -36,15 +50,17 @@
               </div>
               <div class="form-group">
                 <label for="summary">１行評価</label>
-                <input type="text" class="form-control" id="summary" size="90" placeholder="例: 「及第点、ビートダウンだと+1点」" />
+                <input type="text" class="form-control" name="summary" size="80" placeholder="例: 「及第点、ビートダウンだと+1点」" />
               </div>
             </div>
             <label for="description">評価詳細(非必須)</label>
-            <textarea id="description" class="form-control" rows="3" placeholder="ここへカードの評価を入力"></textarea>
+            <textarea name="description" class="form-control" rows="3" placeholder="ここへカードの評価を入力"></textarea>
+            ${unescape(s.csrfHiddenInputTag)}
             <button type="submit" class="btn btn-primary">投稿</button>
           </div>
         </form>
       </div>
+      #end
     </div>
   </div>
   <hr/>

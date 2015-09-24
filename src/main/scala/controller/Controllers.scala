@@ -21,6 +21,7 @@ object Controllers {
     val signupPostUrl = post("/signup")(signupPost).as('signup)
     val logoutUrl = post("/logout")(logout).as('logout)
     val cardsUrl = get("/cards/?")(cards).as('cards)
+    val cardsPostUrl = post("/cards/?")(cardsPost).as('cardsPost)
     val cardUrl = get("/cards/:id")(card).as('card)
     val evaluationPostUrl = post("/cards/:id")(evaluationPost).as('card)
   }
