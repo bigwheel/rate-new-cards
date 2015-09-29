@@ -20,6 +20,8 @@ object SkinnyAppBuild extends Build {
   val theScalaVersion = "2.11.7"
   val jettyVersion = "9.2.13.v20150730"
 
+  fullResolvers ~= {_.filterNot(_.name == "jcenter")}
+
   lazy val baseSettings = servletSettings ++ Seq(
     organization := appOrganization,
     name         := appName,
