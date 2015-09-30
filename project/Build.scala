@@ -2,6 +2,7 @@ import sbt._, Keys._
 import skinny.scalate.ScalatePlugin._, ScalateKeys._
 import skinny.servlet._, ServletPlugin._, ServletKeys._
 import org.sbtidea.SbtIdeaPlugin._
+import com.typesafe.sbt.SbtStartScript
 
 import scala.language.postfixOps
 
@@ -22,7 +23,8 @@ object SkinnyAppBuild extends Build {
 
   fullResolvers ~= {_.filterNot(_.name == "jcenter")}
 
-  lazy val baseSettings = servletSettings ++ Seq(
+  lazy val startScriptSettings = Seq(SbtStartScript.startScriptForClassesSettings: _*)
+  lazy val baseSettings = startScriptSettings ++ servletSettings ++ Seq(
     organization := appOrganization,
     name         := appName,
     version      := appVersion,

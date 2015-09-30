@@ -37,3 +37,5 @@ addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.1.0")
 
 // check the latest version of dependencies
 // addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.1.8")
+
+addSbtPlugin("com.typesafe.sbt" % "sbt-start-script" % "0.10.0")
