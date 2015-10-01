@@ -42,6 +42,6 @@ object User extends SkinnyCRUDMapper[User] with TimestampsFeature[User] {
   )
 
   def findByTwitterUser(twitterUser: twitter4j.User): Option[User] =
-    model.User.where('oAuthType -> "twitter", 'oAuthId -> twitterUser.getId).apply().headOption
+    model.User.where('oAuthType -> "twitter", 'oAuthId -> twitterUser.getId.toString).apply().headOption
 
 }
