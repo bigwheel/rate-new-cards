@@ -15,6 +15,7 @@
       <h3><a href="#${card.id}">${card.name}</a></h3>
       #for (rating <- ratings.filter(_.cardId == card.id))
         <p>
+          <string>${rating.user.map(_.userName).getOrElse("削除されたユーザー")}</string>
           <string>${rating.score}</string>
           ${rating.summary}
           #if (rating.description.nonEmpty)

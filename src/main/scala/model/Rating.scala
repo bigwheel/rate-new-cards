@@ -7,6 +7,7 @@ import org.joda.time._
 case class Rating(
   id: Long,
   userId: Long,
+  user: Option[User] = None,
   cardId: Long,
   score: Int,
   summary: String,
@@ -18,6 +19,8 @@ case class Rating(
 object Rating extends SkinnyCRUDMapper[Rating] with TimestampsFeature[Rating] {
   override lazy val tableName = "ratings"
   override lazy val defaultAlias = createAlias("r")
+
+  belongsTo[User](User, (r, u) => r.copy(user = u)).byDefault
 
   /*
    * If you're familiar with ScalikeJDBC/Skinny ORM, using #autoConstruct makes your mapper simpler.
