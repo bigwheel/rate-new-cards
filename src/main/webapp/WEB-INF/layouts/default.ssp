@@ -6,6 +6,7 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTGカード評価サイト</title>
     ${unescape(s.csrfMetaTags)}
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
