@@ -16,7 +16,7 @@
       #for (rating <- ratings.filter(_.cardId == card.id))
         <p>
           <string>${rating.user.map(_.userName).getOrElse("削除されたユーザー")}</string>
-          <string>${rating.score}</string>
+          <string>${rating.score}点</string>
           ${rating.summary}
           #if (rating.description.nonEmpty)
             <br>${rating.description}
