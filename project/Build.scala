@@ -39,7 +39,7 @@ object SkinnyAppBuild extends Build {
       "org.skinny-framework"    %  "skinny-logback"      % "1.0.6",
       "org.apache.commons"      %  "commons-dbcp2"       % "2.1",
       "com.h2database"          %  "h2"                  % "1.4.188",
-      "org.postgresql"          % "postgresql"           % "9.4-1203-jdbc42",
+      "org.postgresql"          % "postgresql"           % "9.4-1203-jdbc41",
       "org.skinny-framework"    %% "skinny-factory-girl" % skinnyVersion   % "test",
       "org.skinny-framework"    %% "skinny-test"         % skinnyVersion   % "test",
       "org.scalatra"            %% "scalatra-scalatest"  % scalatraVersion % "test",
